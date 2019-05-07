@@ -8,7 +8,8 @@
     "fengmk2 <fengmk2@gmail.com> (http://fengmk2.github.com)",
     "Kevin Jose Martin <kevin@tiliq.com>",
     "Nathan Woltman <nwoltman@outlook.com>",
-    "Sergej Sintschilin <seregpie@gmail.com>"
+    "Sergej Sintschilin <seregpie@gmail.com>",
+    "Michael Collins <intervalia@gmail.com>"
   ],
   "license": "MIT",
   "keywords": [
@@ -21,9 +22,9 @@
   "devDependencies": {
     "beautify-benchmark": "0.2.4",
     "benchmark": "2.1.4",
-    "eslint": "4.18.1",
-    "eslint-plugin-markdown": "1.0.0-beta.6",
-    "nyc": "10.3.2",
+    "eslint": "5.16.0",
+    "eslint-plugin-markdown": "1.0.0",
+    "nyc": "14.1.0",
     "urun": "0.0.8",
     "utest": "0.0.8"
   },

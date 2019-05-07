@@ -1,3 +1,13 @@
+2.3.2 / 2019-05-07
+==================
+
+  * Simplified comparison of `null` and `undefined`
+  * Simplified `zeroPad` function
+  * Converted array enumeration routines
+  * Updated versions of npm repos `nyc`, `eslint`, and `eslint-plugin-markdown`
+  * Added a few extra tests to better cover edge cases
+  * Updated `travis` to test node versions 10.x and 12.x
+
 2.3.1 / 2018-02-24
 ==================
 

@@ -71,7 +71,7 @@ test('SqlString.escape', {
   },
 
   'objects are turned into key value pairs': function() {
-    assert.equal(SqlString.escape({a: 'b', c: 'd'}), "`a` = 'b', `c` = 'd'");
+    assert.equal(SqlString.escape({a: 'b', c: 'd', d: 5}), "`a` = 'b', `c` = 'd', `d` = 5");
   },
 
   'objects function properties are ignored': function() {
@@ -125,46 +125,55 @@ test('SqlString.escape', {
   '\0 gets escaped': function() {
     assert.equal(SqlString.escape('Sup\0er'), "'Sup\\0er'");
     assert.equal(SqlString.escape('Super\0'), "'Super\\0'");
+    assert.equal(SqlString.escape('\0Super'), "'\\0Super'");
   },
 
   '\b gets escaped': function() {
     assert.equal(SqlString.escape('Sup\ber'), "'Sup\\ber'");
     assert.equal(SqlString.escape('Super\b'), "'Super\\b'");
+    assert.equal(SqlString.escape('\bSuper'), "'\\bSuper'");
   },
 
   '\n gets escaped': function() {
     assert.equal(SqlString.escape('Sup\ner'), "'Sup\\ner'");
     assert.equal(SqlString.escape('Super\n'), "'Super\\n'");
+    assert.equal(SqlString.escape('\nSuper'), "'\\nSuper'");
   },
 
   '\r gets escaped': function() {
     assert.equal(SqlString.escape('Sup\rer'), "'Sup\\rer'");
     assert.equal(SqlString.escape('Super\r'), "'Super\\r'");
+    assert.equal(SqlString.escape('\rSuper'), "'\\rSuper'");
   },
 
   '\t gets escaped': function() {
     assert.equal(SqlString.escape('Sup\ter'), "'Sup\\ter'");
     assert.equal(SqlString.escape('Super\t'), "'Super\\t'");
+    assert.equal(SqlString.escape('\tSuper'), "'\\tSuper'");
   },
 
   '\\ gets escaped': function() {
     assert.equal(SqlString.escape('Sup\\er'), "'Sup\\\\er'");
     assert.equal(SqlString.escape('Super\\'), "'Super\\\\'");
+    assert.equal(SqlString.escape('\\Super'), "'\\\\Super'");
   },
 
   '\u001a (ascii 26) gets replaced with \\Z': function() {
     assert.equal(SqlString.escape('Sup\u001aer'), "'Sup\\Zer'");
     assert.equal(SqlString.escape('Super\u001a'), "'Super\\Z'");
+    assert.equal(SqlString.escape('\u001aSuper'), "'\\ZSuper'");
   },
 
   'single quotes get escaped': function() {
     assert.equal(SqlString.escape('Sup\'er'), "'Sup\\'er'");
     assert.equal(SqlString.escape('Super\''), "'Super\\''");
+    assert.equal(SqlString.escape('\'Super'), "'\\'Super'");
   },
 
   'double quotes get escaped': function() {
     assert.equal(SqlString.escape('Sup"er'), "'Sup\\\"er'");
     assert.equal(SqlString.escape('Super"'), "'Super\\\"'");
+    assert.equal(SqlString.escape('"Super'), "'\\\"Super'");
   },
 
   'dates are converted to YYYY-MM-DD HH:II:SS.sss': function() {
